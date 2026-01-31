@@ -2,9 +2,9 @@
 
 ## Overview
 
-Analyze spatial transcriptomics data from Visium, Xenium, MERFISH, and other platforms using Squidpy and SpatialData.
+Analyze spatial transcriptomics data from Visium, Xenium, MERFISH, GeoMx DSP, and other platforms using Squidpy, SpatialData, and GeomxTools.
 
-**Tool type:** python | **Primary tools:** Squidpy, SpatialData, Scanpy, scimap
+**Tool type:** python, r | **Primary tools:** Squidpy, SpatialData, Scanpy, scimap, GeomxTools
 
 ## Skills
 
@@ -21,6 +21,11 @@ Analyze spatial transcriptomics data from Visium, Xenium, MERFISH, and other pla
 | spatial-deconvolution | Estimate cell type composition per spot |
 | spatial-multiomics | Analyze high-resolution platforms (Slide-seq, Stereo-seq, Visium HD) |
 | spatial-proteomics | Analyze CODEX, IMC, MIBI spatial proteomics data |
+| **geomx-dsp** | **NanoString GeoMx Digital Spatial Profiler analysis (R/Bioconductor)** |
+| └─ geomx-data-io | Load GeoMx DCC files, PKC configuration, and sample annotations |
+| └─ geomx-qc | Quality control for GeoMx segments (ROI/AOI) and probes |
+| └─ geomx-normalization | Q3, housekeeping, or background normalization for GeoMx |
+| └─ geomx-differential-expression | Linear mixed-effect models for GeoMx DE analysis |
 
 ## Example Prompts
 
@@ -43,11 +48,22 @@ Analyze spatial transcriptomics data from Visium, Xenium, MERFISH, and other pla
 - "Work with Visium HD subcellular resolution"
 - "Analyze my CODEX spatial proteomics data"
 - "Find spatial interactions between cell types in IMC data"
+- "Load my GeoMx DCC files"
+- "Run QC on GeoMx segments and filter low saturation ROIs"
+- "Normalize GeoMx RNA data with Q3 method"
+- "Compare glomerulus vs tubule in my GeoMx kidney data"
+- "Find differentially expressed genes between disease and healthy in GeoMx"
 
 ## Requirements
 
+### Python (Visium, Xenium, MERFISH, etc.)
 ```bash
 pip install squidpy spatialdata spatialdata-io scanpy anndata scimap
+```
+
+### R/Bioconductor (GeoMx DSP)
+```r
+BiocManager::install(c('GeomxTools', 'NanoStringNCTools'))
 ```
 
 ## Related Skills
