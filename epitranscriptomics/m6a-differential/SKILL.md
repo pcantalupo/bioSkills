@@ -5,9 +5,26 @@ tool_type: r
 primary_tool: exomePeak2
 ---
 
+## Version Compatibility
+
+Reference examples tested with: ggplot2 3.5+
+
+Before using code patterns, verify installed versions match. If versions differ:
+- R: `packageVersion('<pkg>')` then `?function_name` to verify parameters
+
+If code throws ImportError, AttributeError, or TypeError, introspect the installed
+package and adapt the example to match the actual API rather than retrying.
+
 # Differential m6A Analysis
 
+**"Find differential m6A sites between my conditions"** → Identify RNA methylation changes between experimental groups by comparing MeRIP-seq IP/input ratios across conditions with statistical testing.
+- R: `exomePeak2::exomePeak2()` with contrast design for differential peaks
+
 ## exomePeak2 Differential Analysis
+
+**Goal:** Identify m6A sites that differ in methylation level between experimental conditions from MeRIP-seq data.
+
+**Approach:** Run exomePeak2 with a contrast design matrix comparing IP/input ratios across conditions, which accounts for GC bias and biological replicates.
 
 ```r
 library(exomePeak2)
@@ -64,5 +81,5 @@ ggplot(diff_sites, aes(x = log2FoldChange, y = -log10(padj))) +
 ## Related Skills
 
 - m6a-peak-calling - Identify peaks first
-- differential-expression - Similar statistical concepts
+- differential-expression/de-results - Similar statistical concepts
 - modification-visualization - Plot differential sites

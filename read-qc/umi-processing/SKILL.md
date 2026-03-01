@@ -5,7 +5,22 @@ tool_type: cli
 primary_tool: umi_tools
 ---
 
+## Version Compatibility
+
+Reference examples tested with: pandas 2.2+, samtools 1.19+
+
+Before using code patterns, verify installed versions match. If versions differ:
+- Python: `pip show <package>` then `help(module.function)` to check signatures
+- CLI: `<tool> --version` then `<tool> --help` to confirm flags
+
+If code throws ImportError, AttributeError, or TypeError, introspect the installed
+package and adapt the example to match the actual API rather than retrying.
+
 # UMI Processing
+
+**"Deduplicate reads using UMIs"** → Extract UMI barcodes, group reads by UMI+position, and collapse PCR duplicates to count unique molecules.
+- CLI: `umi_tools extract` + `umi_tools dedup` (UMI-tools)
+- CLI: `fgbio GroupReadsByUmi` + `fgbio CallMolecularConsensusReads`
 
 UMIs (Unique Molecular Identifiers) are short random sequences added during library preparation to tag individual molecules before PCR amplification. This enables accurate PCR duplicate removal and molecule counting.
 
@@ -254,6 +269,10 @@ umi_tools group \
 
 ### Standard RNA-seq with UMIs
 
+**Goal:** Process UMI-tagged RNA-seq reads from raw FASTQ through alignment to a deduplicated BAM file.
+
+**Approach:** Extract UMIs from read headers with umi_tools, align with STAR, then deduplicate based on UMI + mapping position to produce a PCR-artifact-free BAM.
+
 ```bash
 #!/bin/bash
 set -euo pipefail
@@ -368,5 +387,5 @@ Note: fastp extracts UMIs but doesn't deduplicate - use umi_tools dedup after al
 
 - fastp-workflow - Simple UMI extraction during preprocessing
 - quality-filtering - QC before UMI extraction
-- alignment-files - BAM sorting/indexing required before dedup
-- single-cell - scRNA-seq workflows use UMI counting
+- alignment-files/sam-bam-basics - BAM sorting/indexing required before dedup
+- single-cell/preprocessing - scRNA-seq workflows use UMI counting

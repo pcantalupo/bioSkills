@@ -5,7 +5,20 @@ tool_type: python
 primary_tool: Bio.Phylo
 ---
 
+## Version Compatibility
+
+Reference examples tested with: BioPython 1.83+, scanpy 1.10+
+
+Before using code patterns, verify installed versions match. If versions differ:
+- Python: `pip show <package>` then `help(module.function)` to check signatures
+
+If code throws ImportError, AttributeError, or TypeError, introspect the installed
+package and adapt the example to match the actual API rather than retrying.
+
 # Tree I/O
+
+**"Read and convert my phylogenetic tree files"** → Parse trees from Newick, Nexus, PhyloXML, or NeXML formats and convert between formats for use in different tools.
+- Python: `Bio.Phylo.read('tree.nwk', 'newick')`, `Bio.Phylo.convert()`
 
 Parse, write, and convert phylogenetic tree files in various formats.
 
@@ -229,4 +242,4 @@ for clade in tree.find_clades():
 - tree-visualization - Draw and export tree figures
 - tree-manipulation - Root, prune, and modify tree structure
 - distance-calculations - Compute distances and build trees from alignments
-- alignment-io - Read MSA files for tree construction
+- alignment/alignment-io - Read MSA files for tree construction

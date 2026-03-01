@@ -5,7 +5,22 @@ tool_type: cli
 primary_tool: plink2
 ---
 
+## Version Compatibility
+
+Reference examples tested with: matplotlib 3.8+, numpy 1.26+, pandas 2.2+
+
+Before using code patterns, verify installed versions match. If versions differ:
+- Python: `pip show <package>` then `help(module.function)` to check signatures
+- CLI: `<tool> --version` then `<tool> --help` to confirm flags
+
+If code throws ImportError, AttributeError, or TypeError, introspect the installed
+package and adapt the example to match the actual API rather than retrying.
+
 # Population Structure
+
+**"Analyze population structure in my genotype data"** → Detect population stratification using PCA of genotypes and estimate ancestry proportions with ADMIXTURE modeling.
+- CLI: `plink2 --pca 20` for principal component analysis
+- CLI: `admixture genotypes.bed K` for admixture proportions
 
 Analyze genetic ancestry and population stratification using PCA and ADMIXTURE.
 
@@ -308,6 +323,10 @@ plink2 --bfile data --keep unrelated.king.cutoff.in.id --make-bed --out unrelate
 
 ## Complete Workflow
 
+**Goal:** Analyze population structure from raw genotypes through PCA and admixture modeling with optimal K selection.
+
+**Approach:** Apply QC filters, LD-prune for independent SNPs, run PCA for visual stratification assessment, then fit ADMIXTURE models across multiple K values and select the best fit by cross-validation error.
+
 ```bash
 # 1. QC filtering
 plink2 --bfile raw --maf 0.01 --geno 0.05 --hwe 1e-6 --make-bed --out qc
@@ -330,3 +349,4 @@ done
 - plink-basics - Data preparation and QC
 - linkage-disequilibrium - LD pruning details
 - association-testing - Use PCs as covariates
+- ecological-genomics/landscape-genomics - Population structure correction for GEA

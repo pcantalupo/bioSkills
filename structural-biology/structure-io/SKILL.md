@@ -5,7 +5,20 @@ tool_type: python
 primary_tool: Bio.PDB
 ---
 
+## Version Compatibility
+
+Reference examples tested with: BioPython 1.83+, scanpy 1.10+
+
+Before using code patterns, verify installed versions match. If versions differ:
+- Python: `pip show <package>` then `help(module.function)` to check signatures
+
+If code throws ImportError, AttributeError, or TypeError, introspect the installed
+package and adapt the example to match the actual API rather than retrying.
+
 # Structure I/O
+
+**"Read a PDB file"** → Parse protein structure files (PDB, mmCIF, MMTF), download from RCSB PDB, and write structures to various formats.
+- Python: `Bio.PDB.PDBParser().get_structure('id', 'file.pdb')`, `Bio.PDB.MMCIFParser()`
 
 Parse, download, and write protein structure files in PDB, mmCIF, and MMTF formats.
 
@@ -280,4 +293,4 @@ with warnings.catch_warnings(record=True) as w:
 - structure-navigation - Traverse SMCRA hierarchy to access chains, residues, atoms
 - geometric-analysis - Measure distances, angles, and superimpose structures
 - structure-modification - Modify coordinates and properties before writing
-- database-access - Fetch structure metadata from NCBI/UniProt
+- database-access/entrez-fetch - Fetch structure metadata from NCBI/UniProt

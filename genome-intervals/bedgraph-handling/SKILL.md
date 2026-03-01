@@ -5,7 +5,22 @@ tool_type: mixed
 primary_tool: pyBigWig
 ---
 
+## Version Compatibility
+
+Reference examples tested with: bedtools 2.31+, samtools 1.19+
+
+Before using code patterns, verify installed versions match. If versions differ:
+- Python: `pip show <package>` then `help(module.function)` to check signatures
+- CLI: `<tool> --version` then `<tool> --help` to confirm flags
+
+If code throws ImportError, AttributeError, or TypeError, introspect the installed
+package and adapt the example to match the actual API rather than retrying.
+
 # bedGraph Handling
+
+**"Work with bedGraph signal tracks"** → Create, manipulate, and convert bedGraph files for displaying coverage or signal intensity on genome browsers.
+- CLI: `bedtools genomecov -bg` to generate, `bedGraphToBigWig` to convert
+- Python: `pyBigWig`, `pybedtools`
 
 bedGraph is a text format for displaying continuous-valued data on genome browsers. Common for coverage, signal intensity, and scores.
 
@@ -279,6 +294,10 @@ awk 'NR==1 {min=$4; max=$4} {if($4<min) min=$4; if($4>max) max=$4}
 
 ## Complete Pipeline
 
+**Goal:** Generate a CPM-normalized bigWig track from a BAM file in a single automated workflow.
+
+**Approach:** Count total mapped reads with samtools, compute a CPM scale factor, generate a scaled bedGraph with bedtools genomecov, sort and clip to chromosome boundaries, then convert to bigWig format.
+
 ```bash
 #!/bin/bash
 BAM=$1
@@ -312,5 +331,5 @@ cat sample.bedgraph >> track.bedgraph
 
 - coverage-analysis - Generate coverage from alignments
 - bigwig-tracks - Work with bigWig format
-- chipseq-visualization - Visualize signal tracks
-- alignment-files - BAM file processing
+- chip-seq/chipseq-visualization - Visualize signal tracks
+- alignment-files/sam-bam-basics - BAM file processing

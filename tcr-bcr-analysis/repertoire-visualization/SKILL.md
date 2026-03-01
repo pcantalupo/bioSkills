@@ -5,7 +5,23 @@ tool_type: mixed
 primary_tool: VDJtools
 ---
 
+## Version Compatibility
+
+Reference examples tested with: MiXCR 4.6+, VDJtools 1.2.1+, ggplot2 3.5+, matplotlib 3.8+, pandas 2.2+, scanpy 1.10+, seaborn 0.13+
+
+Before using code patterns, verify installed versions match. If versions differ:
+- Python: `pip show <package>` then `help(module.function)` to check signatures
+- R: `packageVersion('<pkg>')` then `?function_name` to verify parameters
+- CLI: `<tool> --version` then `<tool> --help` to confirm flags
+
+If code throws ImportError, AttributeError, or TypeError, introspect the installed
+package and adapt the example to match the actual API rather than retrying.
+
 # Repertoire Visualization
+
+**"Visualize my immune repertoire data"** → Create publication-quality figures for TCR/BCR repertoires including circos plots, V(D)J gene usage heatmaps, diversity plots, and clonal tracking across samples.
+- CLI: `vdjtools PlotFancyVJUsage` for circos-style V-J plots
+- Python: `matplotlib`/`seaborn` for custom repertoire visualizations
 
 ## Circos Plots (V-J Gene Usage)
 
@@ -205,4 +221,4 @@ def plot_clone_network(clone_df, similarity_threshold=0.8):
 
 - vdjtools-analysis - Generate input data
 - mixcr-analysis - Generate clonotype tables
-- data-visualization - General plotting concepts
+- data-visualization/ggplot2-fundamentals - General plotting concepts

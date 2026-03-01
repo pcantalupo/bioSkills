@@ -38,6 +38,18 @@ End-to-end bioinformatics pipelines that orchestrate multiple skills into comple
 | riboseq-pipeline | Ribo-seq from FASTQ to translation efficiency |
 | merip-pipeline | MeRIP-seq from FASTQ to m6A peaks |
 | clip-pipeline | CLIP-seq from FASTQ to binding sites and motifs |
+| neoantigen-pipeline | Somatic variants to ranked vaccine candidates |
+| outbreak-pipeline | Pathogen isolates to transmission networks |
+| crispr-editing-pipeline | Target to CRISPR constructs with branching strategies |
+| metabolic-modeling-pipeline | Genome to flux predictions with iterative curation |
+| biomarker-pipeline | End-to-end biomarker discovery from expression to validated panels |
+| splicing-pipeline | Alternative splicing from FASTQ to differential splicing with sashimi plots |
+| liquid-biopsy-pipeline | cfDNA analysis for tumor fraction estimation and mutation detection |
+| genome-annotation-pipeline | Assembled contigs to functional annotation for prokaryotic and eukaryotic genomes |
+| grn-pipeline | Single-cell data to regulon discovery and perturbation simulation via pySCENIC/SCENIC+ |
+| causal-genomics-pipeline | GWAS summary statistics to causal inference via MR, colocalization, and fine-mapping |
+| timecourse-pipeline | Expression matrix to temporal patterns via Mfuzz clustering, rhythm detection, and GAM fitting |
+| edna-pipeline | eDNA amplicons to community ecology via OBITools3/DADA2, iNEXT, and vegan |
 
 ## Example Prompts
 
@@ -61,6 +73,18 @@ End-to-end bioinformatics pipelines that orchestrate multiple skills into comple
 - "Process my Ribo-seq to translation efficiency"
 - "Run m6A analysis from MeRIP-seq data"
 - "Find RBP binding sites from my CLIP-seq data"
+- "Find neoantigens from my somatic VCF for vaccine design"
+- "Investigate this outbreak with genomic data"
+- "Design CRISPR guides to knock out my target gene"
+- "Build a metabolic model from my genome annotation"
+- "Analyze differential splicing between my conditions"
+- "Estimate tumor fraction from my plasma cfDNA"
+- "Run a complete liquid biopsy pipeline for my samples"
+- "Annotate my newly assembled genome from scratch"
+- "Build gene regulatory networks from my single-cell data"
+- "Run post-GWAS causal inference on my summary statistics"
+- "Analyze my time-course expression experiment end to end"
+- "Process my eDNA water samples through the full biodiversity pipeline"
 
 ## Requirements
 
@@ -81,3 +105,10 @@ BiocManager::install(c('DESeq2', 'Seurat', 'clusterProfiler'))
 - **differential-expression** - DE analysis details
 - **single-cell** - Single-cell analysis details
 - **variant-calling** - Variant calling details
+- **alternative-splicing** - Splicing analysis skills
+- **liquid-biopsy** - cfDNA analysis skills
+- **genome-annotation** - Genome annotation skills
+- **gene-regulatory-networks** - GRN inference skills
+- **causal-genomics** - Causal inference from GWAS
+- **temporal-genomics** - Circadian rhythms, temporal clustering, trajectory modeling
+- **ecological-genomics** - eDNA metabarcoding, biodiversity metrics, community ecology

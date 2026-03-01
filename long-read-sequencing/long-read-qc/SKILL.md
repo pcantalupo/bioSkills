@@ -5,7 +5,21 @@ tool_type: cli
 primary_tool: nanoplot
 ---
 
+## Version Compatibility
+
+Reference examples tested with: BioPython 1.83+, numpy 1.26+
+
+Before using code patterns, verify installed versions match. If versions differ:
+- Python: `pip show <package>` then `help(module.function)` to check signatures
+- CLI: `<tool> --version` then `<tool> --help` to confirm flags
+
+If code throws ImportError, AttributeError, or TypeError, introspect the installed
+package and adapt the example to match the actual API rather than retrying.
+
 # Long-Read Quality Control
+
+**"Check the quality of my Nanopore/PacBio run"** → Generate read length distributions, quality score plots, and summary statistics, then filter reads by length and quality thresholds.
+- CLI: `NanoPlot --fastq reads.fq.gz -o nanoplot_output/`, `chopper -q 10 -l 1000 < reads.fq > filtered.fq`
 
 ## NanoPlot - Visualization
 
@@ -137,6 +151,10 @@ seqkit fx2tab -l reads.fastq.gz | cut -f 2 | sort -rn | \
 
 ## Parse FASTQ Quality in Python
 
+**Goal:** Compute read length and quality distributions from long-read FASTQ for custom QC analysis.
+
+**Approach:** Iterate records with BioPython, collecting per-read length and mean Phred quality for summary statistics.
+
 ```python
 import numpy as np
 from Bio import SeqIO
@@ -202,5 +220,5 @@ print(f'Mean quality: {np.mean(qualities):.1f}')
 ## Related Skills
 
 - long-read-alignment - Align filtered reads
-- sequence-io - FASTQ handling
+- sequence-io/fastq-quality - FASTQ quality analysis
 - medaka-polishing - Polish with filtered reads
