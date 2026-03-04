@@ -21,11 +21,10 @@ Analyze spatial transcriptomics data from Visium, Xenium, MERFISH, GeoMx DSP, an
 | spatial-deconvolution | Estimate cell type composition per spot |
 | spatial-multiomics | Analyze high-resolution platforms (Slide-seq, Stereo-seq, Visium HD) |
 | spatial-proteomics | Analyze CODEX, IMC, MIBI spatial proteomics data |
-| **geomx-dsp** | **NanoString GeoMx Digital Spatial Profiler analysis (R/Bioconductor)** |
-| └─ geomx-data-io | Load GeoMx DCC files, PKC configuration, and sample annotations |
-| └─ geomx-qc | Quality control for GeoMx segments (ROI/AOI) and probes |
-| └─ geomx-normalization | Q3, housekeeping, or background normalization for GeoMx |
-| └─ geomx-differential-expression | Linear mixed-effect models for GeoMx DE analysis |
+| geomx-data-io | Load GeoMx DCC files, PKC configuration, and sample annotations |
+| geomx-qc | Quality control for GeoMx segments (ROI/AOI) and probes |
+| geomx-normalization | Q3, housekeeping, or background normalization for GeoMx |
+| geomx-differential-expression | Linear mixed-effect models for GeoMx DE analysis |
 
 ## Example Prompts
 
